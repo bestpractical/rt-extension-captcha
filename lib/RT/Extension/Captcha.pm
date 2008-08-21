@@ -23,6 +23,16 @@ it's not configurable at this point. Either hack this extension
 or set an absolute path to a ttf font via 'ChartFont' option in
 the RT config.
 
+=head1 INSTALLATION
+
+    perl Makefile.PL
+    make
+    make install
+
+In the RT config:
+
+    Set(@Plugins, 'RT::Extension::Captcha', ... other extensions ... );
+
 =cut
 
 use RT::Queue;
