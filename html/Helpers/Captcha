@@ -1,0 +1,20 @@
+<%INIT>
+my $str = $session{'Captcha'}{'String'}
+    ||= uc $session{'CurrentUser'}->GenerateRandomPassword(6, 9);
+my ($image, $type, $rnd) = GD::SecurityImage->new(
+    width   => 320,
+    height  => 100,
+    ptsize  => 40,
+    lines   => 10,
+    font    => RT->Config->Get('ChartFont') || '/usr/share/fonts/corefonts/georgia.ttf',
+)->random( $str )->create( 'ttf', 'circle' )->particle->out;
+
+$session{'Captcha'}{'String'} = $str;
+
+$m->clear_buffer;
+$r->content_type( $type );
+$m->out( $image );
+$m->flush_buffer;
+$m->abort;
+
+</%INIT>
