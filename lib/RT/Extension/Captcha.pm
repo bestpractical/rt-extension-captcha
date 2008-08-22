@@ -14,9 +14,11 @@ RT::Extension::Captcha - solve a CAPTCHA before some actions in RT
 
 =head1 DESCRIPTION
 
-This extension for RT 3.8.1 or newer. At this point only captcha is
-required for creating a ticket. Users who have right 'OnCaptchaOnCreate'
-will see no captchas.
+This extension for RT 3.8.1 or newer. At this point solving captchas is
+required when user create a ticket using either regular interface or
+quick create (with 3.8.2 or newer only) and on replies/comments (updates).
+Users who have right 'OnCaptchaOnCreate' or 'OnCaptchaOnUpdate' will see
+no captchas on corresponding actions. 
 
 As GD's built in font is kinda small, we enabled ttf support and
 it's not configurable at this point. Either hack this extension
