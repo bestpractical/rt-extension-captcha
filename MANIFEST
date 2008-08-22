@@ -1,6 +1,10 @@
+html/Callbacks/RT-Extension-Captcha/index.html/Initial
 html/Callbacks/RT-Extension-Captcha/Ticket/Create.html/BeforeCreate
 html/Callbacks/RT-Extension-Captcha/Ticket/Create.html/FormStart
 html/Callbacks/RT-Extension-Captcha/Ticket/Display.html/Initial
+html/Callbacks/RT-Extension-Captcha/Ticket/Update.html/FormStart
+html/Callbacks/RT-Extension-Captcha/Ticket/Update.html/Initial
+html/Elements/Captcha
 html/Helpers/Captcha
 inc/Module/Install.pm
 inc/Module/Install/Base.pm
