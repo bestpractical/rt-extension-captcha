@@ -41,6 +41,10 @@ use RT::Queue;
 $RT::Queue::RIGHTS->{'NoCaptchaOnCreate'} = "Don't ask user to solve a CAPTCHA on ticket create"; #loc_pair
 $RT::Queue::RIGHTS->{'NoCaptchaOnUpdate'} = "Don't ask user to solve a CAPTCHA on ticket reply or comment"; #loc_pair
 
+use RT::ACE;
+$RT::ACE::LOWERCASERIGHTNAMES{ lc $_ } = $_
+    foreach qw(NoCaptchaOnCreate NoCaptchaOnUpdate);
+
 =head1 LICENSE
 
 Under the same terms as perl itself.
