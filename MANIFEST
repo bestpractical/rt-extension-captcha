@@ -1,3 +1,4 @@
+etc/Captcha_Config.pm
 html/Callbacks/RT-Extension-Captcha/index.html/Initial
 html/Callbacks/RT-Extension-Captcha/Ticket/Create.html/BeforeCreate
 html/Callbacks/RT-Extension-Captcha/Ticket/Create.html/FormStart
