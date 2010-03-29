@@ -2,6 +2,7 @@ use inc::Module::Install;
 
 RTx         'RT-Extension-Captcha';
 all_from    'lib/RT/Extension/Captcha.pm';
+readme_from 'lib/RT/Extension/Captcha.pm';
 
 { # check RT version
     my @v = split /\./, "$RT::VERSION";

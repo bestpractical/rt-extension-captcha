@@ -1,1 +1,52 @@
-Read `perldoc lib/RT/Extension/Captcha.pm`
+NAME
+    RT::Extension::Captcha - solve a CAPTCHA before some actions in RT
+
+DESCRIPTION
+    This extension is for RT 3.8.1 or newer. At this point solving captchas
+    is required when user create a ticket using either regular interface or
+    quick create (with 3.8.2 or newer only) and on replies/comments
+    (updates).
+
+INSTALLATION
+        perl Makefile.PL
+        make
+        make install
+
+    In the RT config:
+
+        Set(@Plugins, 'RT::Extension::Captcha', ... other extensions ... );
+
+CONFIGURATION
+  No CAPTCHA rights
+    Users who have right 'NoCaptchaOnCreate' or 'NoCaptchaOnUpdate' will see
+    no captchas on corresponding actions.
+
+  Font
+    As GD's builtin font is kinda small. A ttf font is used instead. By
+    default font defined by ChartFont option (RT's option to set fonts for
+    charts) is used for CAPTCHA images.
+
+    As well, you can set font for cpatchas only using "%Captcha option"
+    described below.
+
+  %Captcha option
+    See etc/Captcha_Config.pm for defaults and example. %Captcha option is a
+    hash. Now, only ImageProperties key has meaning:
+
+        Set(%Captcha,
+            ImageProperties => {
+                option => value,
+                option => value,
+                ...
+            },
+        );
+
+    ImageProperties are passed into "new" in GD::SecurityImage. Read
+    documentation for the module for full list of options.
+
+LICENSE
+    Under the same terms as perl itself.
+
+AUTHOR
+    Ruslan Zakirov <ruz@bestpractical.com>
+

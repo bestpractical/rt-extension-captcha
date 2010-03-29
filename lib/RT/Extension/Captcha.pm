@@ -14,16 +14,9 @@ RT::Extension::Captcha - solve a CAPTCHA before some actions in RT
 
 =head1 DESCRIPTION
 
-This extension for RT 3.8.1 or newer. At this point solving captchas is
+This extension is for RT 3.8.1 or newer. At this point solving captchas is
 required when user create a ticket using either regular interface or
 quick create (with 3.8.2 or newer only) and on replies/comments (updates).
-Users who have right 'OnCaptchaOnCreate' or 'OnCaptchaOnUpdate' will see
-no captchas on corresponding actions. 
-
-As GD's built in font is kinda small, we enabled ttf support and
-it's not configurable at this point. Either hack this extension
-or set an absolute path to a ttf font via 'ChartFont' option in
-the RT config.
 
 =head1 INSTALLATION
 
@@ -34,6 +27,38 @@ the RT config.
 In the RT config:
 
     Set(@Plugins, 'RT::Extension::Captcha', ... other extensions ... );
+
+=head1 CONFIGURATION
+
+=head2 No CAPTCHA rights
+
+Users who have right 'NoCaptchaOnCreate' or 'NoCaptchaOnUpdate'
+will see no captchas on corresponding actions.
+
+=head2 Font
+
+As GD's builtin font is kinda small. A ttf font is used instead.
+By default font defined by ChartFont option (RT's option to set
+fonts for charts) is used for CAPTCHA images.
+
+As well, you can set font for cpatchas only using L</%Captcha option>
+described below.
+
+=head2 %Captcha option
+
+See F<etc/Captcha_Config.pm> for defaults and example. C<%Captcha>
+option is a hash. Now, only ImageProperties key has meaning:
+
+    Set(%Captcha,
+        ImageProperties => {
+            option => value,
+            option => value,
+            ...
+        },
+    );
+
+ImageProperties are passed into L<GD::SecurityImage/new>. Read documentation
+for the module for full list of options.
 
 =cut
 
