@@ -2,8 +2,12 @@
 abstract: 'solve a CAPTCHA before some actions in RT'
 author:
   - 'Ruslan Zakirov <ruz@bestpractical.com>'
+build_requires:
+  ExtUtils::MakeMaker: 6.42
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
 distribution_type: module
-generated_by: 'Module::Install version 0.77'
+generated_by: 'Module::Install version 0.95'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -13,8 +17,6 @@ no_index:
   directory:
     - etc
     - html
-    - po
-    - var
     - inc
 requires:
   GD::SecurityImage: 0

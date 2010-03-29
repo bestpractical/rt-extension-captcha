@@ -8,7 +8,7 @@ no warnings 'once';
 
 use Module::Install::Base;
 use base 'Module::Install::Base';
-our $VERSION = '0.23';
+our $VERSION = '0.25';
 
 use FindBin;
 use File::Glob     ();
@@ -50,7 +50,8 @@ sub RTx {
         until ( eval { require RT; $RT::LocalPath } ) {
             warn
                 "Cannot find the location of RT.pm that defines \$RT::LocalPath in: @INC\n";
-            $_ = $self->prompt("Path to your RT.pm:") or exit;
+            $_ = $self->prompt("Path to directory containing your RT.pm:") or exit;
+            $_ =~ s/\/RT\.pm$//;
             push @INC, $_, "$_/rt3/lib", "$_/lib/rt3", "$_/lib";
         }
     }
@@ -81,6 +82,8 @@ sub RTx {
     # directories
     my %path;
     if ( $RT::LocalPluginPath ) {
+        die "Because of bugs in RT 3.8.0 this extension can not be installed.\n"
+            ."Upgrade to RT 3.8.1 or newer.\n" if $RT::VERSION =~ /^3\.8\.0/;
         $path{$_} = $RT::LocalPluginPath . "/$original_name/$_"
             foreach @DIRS;
     } else {
@@ -186,4 +189,4 @@ sub RTxInit {
 
 __END__
 
-#line 282
+#line 303
