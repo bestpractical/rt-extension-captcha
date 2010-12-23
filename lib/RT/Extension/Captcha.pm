@@ -66,6 +66,11 @@ use RT::Queue;
 $RT::Queue::RIGHTS->{'NoCaptchaOnCreate'} = "Don't ask user to solve a CAPTCHA on ticket create"; #loc_pair
 $RT::Queue::RIGHTS->{'NoCaptchaOnUpdate'} = "Don't ask user to solve a CAPTCHA on ticket reply or comment"; #loc_pair
 
+if ($RT::Queue::RIGHT_CATEGORIES) {
+    $RT::Queue::RIGHT_CATEGORIES->{"NoCaptchaOn$_"} = 'Staff'
+        for qw(Create Update);
+}
+
 use RT::ACE;
 $RT::ACE::LOWERCASERIGHTNAMES{ lc $_ } = $_
     foreach qw(NoCaptchaOnCreate NoCaptchaOnUpdate);
