@@ -2,19 +2,31 @@ NAME
     RT::Extension::Captcha - solve a CAPTCHA before some actions in RT
 
 DESCRIPTION
-    This extension is for RT 3.8.1 or newer. At this point solving captchas
-    is required when user create a ticket using either regular interface or
-    quick create (with 3.8.2 or newer only) and on replies/comments
-    (updates).
+    This extension is for RT 3.8.1 or newer. It requires solving captchas
+    when a user creates a ticket (using either regular interface or quick
+    create) and on replies/comments (updates).
 
 INSTALLATION
-        perl Makefile.PL
-        make
-        make install
+    perl Makefile.PL
+    make
+    make install
+        May need root permissions
 
-    In the RT config:
+    Edit your /opt/rt4/etc/RT_SiteConfig.pm
+        If you are using RT 4.2 or greater, add this line:
 
-        Set(@Plugins, 'RT::Extension::Captcha', ... other extensions ... );
+            Plugin('RT::Extension::Captcha');
+
+        For RT 4.0, add this line:
+
+            Set(@Plugins, qw(RT::Extension::Captcha));
+
+        or add RT::Extension::Captcha to your existing @Plugins line.
+
+    Clear your mason cache
+            rm -rf /opt/rt4/var/mason_data/obj
+
+    Restart your webserver
 
 CONFIGURATION
   No CAPTCHA rights
@@ -44,9 +56,22 @@ CONFIGURATION
     ImageProperties are passed into "new" in GD::SecurityImage. Read
     documentation for the module for full list of options.
 
-LICENSE
-    Under the same terms as perl itself.
-
 AUTHOR
-    Ruslan Zakirov <ruz@bestpractical.com>
+    Best Practical Solutions, LLC <modules@bestpractical.com>
+
+BUGS
+    All bugs should be reported via email to
+
+        L<bug-RT-Extension-Captcha@rt.cpan.org|mailto:bug-RT-Extension-Captcha@rt.cpan.org>
+
+    or via the web at
+
+        L<rt.cpan.org|http://rt.cpan.org/Public/Dist/Display.html?Name=RT-Extension-Captcha>.
+
+LICENSE AND COPYRIGHT
+    This software is Copyright (c) 2014 by Best Practical Solutions
+
+    This is free software, licensed under:
+
+      The GNU General Public License, Version 2, June 1991
 
