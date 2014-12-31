@@ -2,9 +2,9 @@ NAME
     RT::Extension::Captcha - solve a CAPTCHA before some actions in RT
 
 DESCRIPTION
-    This extension is for RT 3.8.1 or newer. It requires solving captchas
-    when a user creates a ticket (using either regular interface or quick
-    create) and on replies/comments (updates).
+    This extension is for RT 4.2 or newer. It requires solving captchas when
+    a user creates a ticket (using either regular interface or quick create)
+    and on replies/comments (updates).
 
 INSTALLATION
     perl Makefile.PL
@@ -13,15 +13,9 @@ INSTALLATION
         May need root permissions
 
     Edit your /opt/rt4/etc/RT_SiteConfig.pm
-        If you are using RT 4.2 or greater, add this line:
+        Add this line:
 
             Plugin('RT::Extension::Captcha');
-
-        For RT 4.0, add this line:
-
-            Set(@Plugins, qw(RT::Extension::Captcha));
-
-        or add RT::Extension::Captcha to your existing @Plugins line.
 
     Clear your mason cache
             rm -rf /opt/rt4/var/mason_data/obj

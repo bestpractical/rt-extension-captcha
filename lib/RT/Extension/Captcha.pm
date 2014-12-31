@@ -4,7 +4,7 @@ use 5.008003;
 use strict;
 use warnings;
 
-our $VERSION = '1.00';
+our $VERSION = '1.20';
 
 use GD::SecurityImage;
 
@@ -14,7 +14,7 @@ RT::Extension::Captcha - solve a CAPTCHA before some actions in RT
 
 =head1 DESCRIPTION
 
-This extension is for RT 3.8.1 or newer.  It requires solving captchas
+This extension is for RT 4.2 or newer.  It requires solving captchas
 when a user creates a ticket (using either regular interface or quick
 create) and on replies/comments (updates).
 
@@ -32,15 +32,9 @@ May need root permissions
 
 =item Edit your F</opt/rt4/etc/RT_SiteConfig.pm>
 
-If you are using RT 4.2 or greater, add this line:
+Add this line:
 
     Plugin('RT::Extension::Captcha');
-
-For RT 4.0, add this line:
-
-    Set(@Plugins, qw(RT::Extension::Captcha));
-
-or add C<RT::Extension::Captcha> to your existing C<@Plugins> line.
 
 =item Clear your mason cache
 
